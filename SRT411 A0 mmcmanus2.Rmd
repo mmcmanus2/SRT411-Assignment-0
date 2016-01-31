@@ -1,0 +1,150 @@
+---
+title: "SRT411 Assignment 0"
+output: html_document
+---
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+Hello, welcome to my webpage. The name of my github account is mmcmanus2.
+
+This document/webpage is for my Assignment 0. For this assignment I have to follow a pdf called A (very) short introduction to R. There are 14 Todos in this assignment and I have attempted all of them plus an additional todo in the footnote of the last one. 
+
+The document called A very short introduction to R can be found here at this link:   <https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf>
+
+Other documents and webpages I used can be found here:
+<http://nicercode.github.io/guides/reports/>
+<http://kbroman.org/knitr_knutshell/pages/markdown.html>
+<http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html>
+<https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>
+<http://rmarkdown.rstudio.com/>
+
+```{r}
+#Todo 1
+(2014 - 2013) / (2014 - 1995) * 100
+```
+
+```{r}
+#Todo 2
+Age <- (2014-1995)
+UniTime <- (2014-2013)
+Perc <- (100)
+Life <- (UniTime/Age) * Perc
+Life
+```
+
+```{r}
+#Todo 3
+Vect1 <- c(4, 5, 8, 11)
+sum(Vect1)
+```
+```{r}
+#Todo 4
+plot(rnorm(100))
+```
+
+```{r}
+#Todo 5
+?sqrt
+```
+
+```{r}
+#Todo 6
+Randnum <- rnorm(100)
+plot(Randnum)
+```
+
+```{r}
+#Todo 7
+P <- seq(from= 31, to = 60, by = 1)
+Q <- matrix(P, nrow = 6, ncol =  5)
+P
+Q
+```
+
+```{r}
+#Todo 8
+x1 <- c(rnorm(100))
+x2 <- c(rnorm(100))
+x3 <- c(rnorm(100))
+t <- data.frame(a = x1, b = x1 + x2, c = x1 + x2 + x3)
+plot(t)
+#sd(t) #This line causes an error
+```
+
+```{r}
+#Todo 9
+x1 <- c(rnorm(100))
+x2 <- c(rnorm(100))
+x3 <- c(rnorm(100))
+t <- data.frame(a = x1, b = x1 + x2, c = x1 + x2 + x3)
+plot(t)
+#sd(t)
+plot(t$a, type="l", ylim=range(t), lwd=3, col=rgb(1,0,0,0.3)) # These next few lines change the graphical parts of the plot. For example the colours changed, line type, the dot/point size and style. 
+lines(t$b, type="s", lwd=2, col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4, col=rgb(0,0,1,0.3))
+#If you want to make plot symbols larger or smaller, you can use the parameter cex. This parameter tells R how much to scale the points up (or down). For example, cex=2 would make the points twice as large, and cex=0.5 would make them half as small.
+#You can change the symbols that are plotted at each point by using the parameter pch. There are 19 possible symbols, and they are numbered from 0 to 18. 
+#For the parameterlwd it is for line width relative to the default (default=1). 2 is twice as wide.
+#The RGB parameter allows you to change the colour for the graph.
+
+```
+
+```{r}
+#Todo 10
+d <- data.frame(a = c(1, 2, 4, 8, 16, 32), g = c(2, 4, 8, 16, 32, 64), x = c(3, 6, 12, 24, 48, 96))
+d
+write.table(d, file="tst1.txt", row.names=FALSE)
+d2 <- read.table(file="tst1.txt", header=TRUE)
+d2
+d3 <- d$g * 5
+d3
+write.table(d3, file="tst2.txt")
+```
+
+```{r}
+#Todo 11
+vect2 <- c(rnorm(100))
+sqrvec <- sqrt(vect2)
+mean(sqrvec)
+```
+
+```{r}
+#Todo 12
+presents <- c(0, 10, 5)
+date1=strptime(c("20160129130000", "20141225000000", "20161219000000"), format="%Y%m%d%H%M%S")
+date1
+plot(date1, presents)
+```
+
+```{r}
+#Todo 13
+x <- c(1:100)
+for (i in 1:length(x)) {
+  if (x[i] < 5 | x[i] > 90) 
+    x[i] <- x[i] * 5 else x[i] <- x[i] * 0.1
+}
+x
+```
+
+```{r}
+#Todo 14
+VecLoop <- function(x) {
+  for (i in 1:length(x)) {
+    if (x[i] < 5 | x[i] > 90) 
+      x[i] <- x[i] * 5 else x[i] <- x[i] * 0.1
+  }
+  return(x)
+}
+VecLoop(1:100)
+```
+
+```{r} 
+#Todo 15
+#Could not get this working properly, I was not exactly sure how to do it.
+VecLoop <- function(x) {
+  c(x, i, 1:length(x))
+  if (x[i] < 5 | x[i] > 90) 
+    x[i] <- x[i] * 5 else x[i] <- x[i] * 0.1
+  return(x)
+}
+VecLoop(1:100)
+```
